@@ -85,6 +85,30 @@ package_source/fast: package_source
 
 .PHONY : package_source/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
@@ -127,30 +151,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
-.PHONY : install/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -631,6 +631,48 @@ skiplist_tests/fast:
 	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_tests.dir\build.make tests/CMakeFiles/skiplist_tests.dir/build
 .PHONY : skiplist_tests/fast
 
+# Convenience name for target.
+tests/CMakeFiles/skiplist_finger_tests.dir/rule:
+	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/skiplist_finger_tests.dir/rule
+.PHONY : tests/CMakeFiles/skiplist_finger_tests.dir/rule
+
+# Convenience name for target.
+skiplist_finger_tests: tests/CMakeFiles/skiplist_finger_tests.dir/rule
+
+.PHONY : skiplist_finger_tests
+
+# fast build rule for target.
+skiplist_finger_tests/fast:
+	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/build
+.PHONY : skiplist_finger_tests/fast
+
+skiplist_finger_tests.obj: skiplist_finger_tests.cc.obj
+
+.PHONY : skiplist_finger_tests.obj
+
+# target to build an object file
+skiplist_finger_tests.cc.obj:
+	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/skiplist_finger_tests.cc.obj
+.PHONY : skiplist_finger_tests.cc.obj
+
+skiplist_finger_tests.i: skiplist_finger_tests.cc.i
+
+.PHONY : skiplist_finger_tests.i
+
+# target to preprocess a source file
+skiplist_finger_tests.cc.i:
+	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/skiplist_finger_tests.cc.i
+.PHONY : skiplist_finger_tests.cc.i
+
+skiplist_finger_tests.s: skiplist_finger_tests.cc.s
+
+.PHONY : skiplist_finger_tests.s
+
+# target to generate assembly for a file
+skiplist_finger_tests.cc.s:
+	cd /d C:\github\skiplist\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/skiplist_finger_tests.cc.s
+.PHONY : skiplist_finger_tests.cc.s
+
 skiplist_tests.obj: skiplist_tests.cc.obj
 
 .PHONY : skiplist_tests.obj
@@ -700,7 +742,11 @@ help:
 	@echo ... NightlySubmit
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
+	@echo ... skiplist_finger_tests
 	@echo ... skiplist_tests
+	@echo ... skiplist_finger_tests.obj
+	@echo ... skiplist_finger_tests.i
+	@echo ... skiplist_finger_tests.s
 	@echo ... skiplist_tests.obj
 	@echo ... skiplist_tests.i
 	@echo ... skiplist_tests.s

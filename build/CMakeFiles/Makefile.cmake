@@ -122,6 +122,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/CMakeFiles/ContinuousTest.dir/DependInfo.cmake"
   "tests/CMakeFiles/ContinuousCoverage.dir/DependInfo.cmake"
   "tests/CMakeFiles/skiplist_tests.dir/DependInfo.cmake"
+  "tests/CMakeFiles/skiplist_finger_tests.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"

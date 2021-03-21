@@ -49,10 +49,17 @@ private:
     skiplist_element header_;
     skiplist_element nil_;
 
+    bool use_finger; 
+    std::vector<skiplist_element*> finger; 
+
     int get_random_level();
+    /**
+     * This function sets the finger vector. After calling this, finger[0] is right before the desired element. 
+    */
+    void search_helper(int key); 
 
 public:
-    skiplist(int cap, double p = 0.25);
+    skiplist(int cap, double p = 0.25, int max_level = 0);
     ~skiplist();
     std::pair<bool, int> search(int key); //TODO: change it to use std::optional.
     
@@ -62,5 +69,9 @@ public:
     */
     bool insert(int key, int value);
     bool erase(int key);
+
+    void enable_finger() {use_finger=true;}
+    void disable_finger() {use_finger=false;}
+    std::pair<int, skiplist_element*> find_finger (int key); 
 };
 #endif //_SKIPLIST_SRC_SKIPLIST_H_

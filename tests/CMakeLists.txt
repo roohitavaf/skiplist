@@ -42,3 +42,4 @@ endmacro()
 message("${PROJECT_DIR}")
 
 package_add_test(skiplist_tests skiplist_tests.cc $<TARGET_OBJECTS:skiplistlib> "${PROJECT_DIR}")
+package_add_test(skiplist_finger_tests skiplist_finger_tests.cc $<TARGET_OBJECTS:skiplistlib> "${PROJECT_DIR}")

@@ -587,6 +587,19 @@ skiplist_tests/fast:
 .PHONY : skiplist_tests/fast
 
 #=============================================================================
+# Target rules for targets named skiplist_finger_tests
+
+# Build rule for target.
+skiplist_finger_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 skiplist_finger_tests
+.PHONY : skiplist_finger_tests
+
+# fast build rule for target.
+skiplist_finger_tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/build
+.PHONY : skiplist_finger_tests/fast
+
+#=============================================================================
 # Target rules for targets named gmock_main
 
 # Build rule for target.
@@ -711,6 +724,7 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
+	@echo ... skiplist_finger_tests
 	@echo ... skiplist_tests
 	@echo ... skiplistlib
 	@echo ... src/skiplist.obj

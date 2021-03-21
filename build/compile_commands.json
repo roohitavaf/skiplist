@@ -10,6 +10,11 @@
   "file": "C:/github/skiplist/tests/skiplist_tests.cc"
 },
 {
+  "directory": "C:/github/skiplist/build/tests",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE  @CMakeFiles/skiplist_finger_tests.dir/includes_CXX.rsp -g -o CMakeFiles\\skiplist_finger_tests.dir\\skiplist_finger_tests.cc.obj -c C:\\github\\skiplist\\tests\\skiplist_finger_tests.cc",
+  "file": "C:/github/skiplist/tests/skiplist_finger_tests.cc"
+},
+{
   "directory": "C:/github/skiplist/build/_deps/googletest-build/googlemock",
   "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE  @CMakeFiles/gmock_main.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c C:\\github\\skiplist\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc",
   "file": "C:/github/skiplist/build/_deps/googletest-src/googlemock/src/gmock_main.cc"
