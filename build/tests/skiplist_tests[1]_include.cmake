@@ -1,0 +1,5 @@
+if(EXISTS "C:/github/skiplist/build/tests/skiplist_tests[1]_tests.cmake")
+  include("C:/github/skiplist/build/tests/skiplist_tests[1]_tests.cmake")
+else()
+  add_test(skiplist_tests_NOT_BUILT skiplist_tests_NOT_BUILT)
+endif()
