@@ -9,6 +9,8 @@
 C:/github/skiplist/src/skiplist.cc
 skiplist.h
 C:/github/skiplist/src/skiplist.h
+math.h
+-
 cstdlib
 -
 

@@ -26,6 +26,7 @@ SOFTWARE.
 */
 #include "skiplist.h"
 
+#include <math.h>
 #include <cstdlib>
 
 skiplist::skiplist (int cap, double p, int max_level) : 
@@ -38,7 +39,7 @@ skiplist::skiplist (int cap, double p, int max_level) :
     nil_(INT_MAX,0),
     use_finger(false) {
     if (!max_level_) {
-        max_level_ = 5; //TODO set max_level_ according to cap_
+        max_level_ = std::max(1.0, ceil((double)log(cap)/log(1/p)));
     }
     for (int l=0; l < max_level_; l++){
         header_.forward_ptrs_.push_back(&nil_); 

@@ -49,6 +49,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.18/Modules/WriteBasicConfigVersionFile.cmake"
   "C:/Program Files/CMake/share/cmake-3.18/Templates/CPackConfig.cmake.in"
   "../CMakeLists.txt"
+  "../benchmarks/CMakeLists.txt"
   "CMakeFiles/3.18.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.18.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.18.1/CMakeRCCompiler.cmake"
@@ -88,6 +89,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "_deps/googletest-build/googletest/generated/gtest.pc"
   "_deps/googletest-build/googletest/generated/gtest_main.pc"
   "_deps/googletest-build/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "benchmarks/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -127,4 +129,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
+  "benchmarks/CMakeFiles/benchmark.dir/DependInfo.cmake"
   )

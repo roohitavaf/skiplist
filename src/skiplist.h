@@ -31,15 +31,15 @@ SOFTWARE.
 #include <vector>
 
 struct skiplist_element
-{ //TODO: make it template class
+{
     int key_;
     int value_;
-    std::vector<skiplist_element *> forward_ptrs_; //TODO: change it to use array and std::unique_ptr
+    std::vector<skiplist_element *> forward_ptrs_; 
     skiplist_element (int key, int value) : key_(key), value_(value) {}
 };
 
 class skiplist
-{ //TODO: make it template class
+{
 private:
     int level_;
     int cap_;

@@ -73,17 +73,20 @@ CMAKE_BINARY_DIR = C:\github\skiplist\build
 # The main recursive "all" target.
 all: CMakeFiles/skiplistlib.dir/all
 all: tests/all
+all: benchmarks/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: tests/preinstall
+preinstall: benchmarks/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/skiplistlib.dir/clean
 clean: tests/clean
+clean: benchmarks/clean
 
 .PHONY : clean
 
@@ -148,6 +151,24 @@ _deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMake
 .PHONY : _deps/googletest-build/googletest/clean
 
 #=============================================================================
+# Directory level rules for directory benchmarks
+
+# Recursive "all" directory target.
+benchmarks/all: benchmarks/CMakeFiles/benchmark.dir/all
+
+.PHONY : benchmarks/all
+
+# Recursive "preinstall" directory target.
+benchmarks/preinstall:
+
+.PHONY : benchmarks/preinstall
+
+# Recursive "clean" directory target.
+benchmarks/clean: benchmarks/CMakeFiles/benchmark.dir/clean
+
+.PHONY : benchmarks/clean
+
+#=============================================================================
 # Directory level rules for directory tests
 
 # Recursive "all" directory target.
@@ -204,7 +225,7 @@ tests/clean: _deps/googletest-build/clean
 CMakeFiles/skiplistlib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\skiplistlib.dir\build.make CMakeFiles/skiplistlib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\skiplistlib.dir\build.make CMakeFiles/skiplistlib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=13 "Built target skiplistlib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=15 "Built target skiplistlib"
 .PHONY : CMakeFiles/skiplistlib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -985,12 +1006,12 @@ tests/CMakeFiles/ContinuousCoverage.dir/clean:
 
 # All Build rule for target.
 tests/CMakeFiles/skiplist_tests.dir/all: CMakeFiles/skiplistlib.dir/all
-tests/CMakeFiles/skiplist_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 tests/CMakeFiles/skiplist_tests.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 tests/CMakeFiles/skiplist_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/skiplist_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_tests.dir\build.make tests/CMakeFiles/skiplist_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_tests.dir\build.make tests/CMakeFiles/skiplist_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=11,12 "Built target skiplist_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=13,14 "Built target skiplist_tests"
 .PHONY : tests/CMakeFiles/skiplist_tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1015,12 +1036,12 @@ tests/CMakeFiles/skiplist_tests.dir/clean:
 
 # All Build rule for target.
 tests/CMakeFiles/skiplist_finger_tests.dir/all: CMakeFiles/skiplistlib.dir/all
-tests/CMakeFiles/skiplist_finger_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 tests/CMakeFiles/skiplist_finger_tests.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 tests/CMakeFiles/skiplist_finger_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/skiplist_finger_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\skiplist_finger_tests.dir\build.make tests/CMakeFiles/skiplist_finger_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=9,10 "Built target skiplist_finger_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=11,12 "Built target skiplist_finger_tests"
 .PHONY : tests/CMakeFiles/skiplist_finger_tests.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1048,7 +1069,7 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletes
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googlemock\CMakeFiles\gmock_main.dir\build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googlemock\CMakeFiles\gmock_main.dir\build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=3,4 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=5,6 "Built target gmock_main"
 .PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1075,7 +1096,7 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean:
 _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googlemock\CMakeFiles\gmock.dir\build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googlemock\CMakeFiles\gmock.dir\build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=1,2 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=3,4 "Built target gmock"
 .PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1102,7 +1123,7 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean:
 _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=5,6 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=7,8 "Built target gtest"
 .PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1129,7 +1150,7 @@ _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean:
 _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest_main.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest_main.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=7,8 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=9,10 "Built target gtest_main"
 .PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1148,6 +1169,33 @@ gtest_main: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/rule
 _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean:
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest_main.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
 .PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean
+
+#=============================================================================
+# Target rules for target benchmarks/CMakeFiles/benchmark.dir
+
+# All Build rule for target.
+benchmarks/CMakeFiles/benchmark.dir/all: CMakeFiles/skiplistlib.dir/all
+	$(MAKE) $(MAKESILENT) -f benchmarks\CMakeFiles\benchmark.dir\build.make benchmarks/CMakeFiles/benchmark.dir/depend
+	$(MAKE) $(MAKESILENT) -f benchmarks\CMakeFiles\benchmark.dir\build.make benchmarks/CMakeFiles/benchmark.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\github\skiplist\build\CMakeFiles --progress-num=1,2 "Built target benchmark"
+.PHONY : benchmarks/CMakeFiles/benchmark.dir/all
+
+# Build rule for subdir invocation for target.
+benchmarks/CMakeFiles/benchmark.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\github\skiplist\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 benchmarks/CMakeFiles/benchmark.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\github\skiplist\build\CMakeFiles 0
+.PHONY : benchmarks/CMakeFiles/benchmark.dir/rule
+
+# Convenience name for target.
+benchmark: benchmarks/CMakeFiles/benchmark.dir/rule
+
+.PHONY : benchmark
+
+# clean rule for target.
+benchmarks/CMakeFiles/benchmark.dir/clean:
+	$(MAKE) $(MAKESILENT) -f benchmarks\CMakeFiles\benchmark.dir\build.make benchmarks/CMakeFiles/benchmark.dir/clean
+.PHONY : benchmarks/CMakeFiles/benchmark.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

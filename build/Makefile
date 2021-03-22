@@ -651,6 +651,19 @@ gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps\googletest-build\googletest\CMakeFiles\gtest_main.dir\build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+#=============================================================================
+# Target rules for targets named benchmark
+
+# Build rule for target.
+benchmark: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 benchmark
+.PHONY : benchmark
+
+# fast build rule for target.
+benchmark/fast:
+	$(MAKE) $(MAKESILENT) -f benchmarks\CMakeFiles\benchmark.dir\build.make benchmarks/CMakeFiles/benchmark.dir/build
+.PHONY : benchmark/fast
+
 src/skiplist.obj: src/skiplist.cc.obj
 
 .PHONY : src/skiplist.obj
@@ -720,6 +733,7 @@ help:
 	@echo ... NightlySubmit
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
+	@echo ... benchmark
 	@echo ... gmock
 	@echo ... gmock_main
 	@echo ... gtest

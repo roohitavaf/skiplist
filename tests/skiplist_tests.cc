@@ -4,7 +4,7 @@
 
 TEST(skiplist_tests, basic_insert_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
 
     auto insert_ret = sk.insert(1, 10);
     ASSERT_EQ(true, insert_ret);
@@ -30,7 +30,7 @@ TEST(skiplist_tests, basic_insert_test)
 
 TEST(skiplist_tests, basic_erase_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
 
     auto insert_ret = sk.insert(1, 10);
     ASSERT_EQ(true, insert_ret);
@@ -51,9 +51,9 @@ TEST(skiplist_tests, basic_erase_test)
 
 TEST(skiplist_tests, cap_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
 
-    for (int i = 0 ;i < 10; i++) {
+    for (int i = 0 ;i < 1000; i++) {
         auto insert_ret = sk.insert(i, i*10);
         ASSERT_EQ(true, insert_ret);
     }
@@ -64,7 +64,7 @@ TEST(skiplist_tests, cap_test)
 
 TEST(skiplist_tests, many_insert_test)
 {
-    skiplist sk(100);
+    skiplist sk(1000);
 
     for (int i = 0 ;i < 100; i++) {
         auto insert_ret = sk.insert(i, i*10);
@@ -80,7 +80,7 @@ TEST(skiplist_tests, many_insert_test)
 
 TEST(skiplist_tests, many_erase_test)
 {
-    skiplist sk(100);
+    skiplist sk(1000);
 
     for (int i = 0 ;i < 100; i++) {
         auto insert_ret = sk.insert(i, i*10);

@@ -33,5 +33,10 @@
   "directory": "C:/github/skiplist/build/_deps/googletest-build/googletest",
   "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE  @CMakeFiles/gtest_main.dir/includes_CXX.rsp -g -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=0 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++11 -o CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c C:\\github\\skiplist\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc",
   "file": "C:/github/skiplist/build/_deps/googletest-src/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "C:/github/skiplist/build/benchmarks",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE  @CMakeFiles/benchmark.dir/includes_CXX.rsp -g -o CMakeFiles\\benchmark.dir\\skiplist_benchmark_main.cc.obj -c C:\\github\\skiplist\\benchmarks\\skiplist_benchmark_main.cc",
+  "file": "C:/github/skiplist/benchmarks/skiplist_benchmark_main.cc"
 }
 ]

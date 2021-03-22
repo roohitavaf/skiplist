@@ -73,3 +73,12 @@ C:/github/skiplist/build/_deps/googletest-build/googletest/CMakeFiles/install.di
 C:/github/skiplist/build/_deps/googletest-build/googletest/CMakeFiles/edit_cache.dir
 C:/github/skiplist/build/_deps/googletest-build/googletest/CMakeFiles/rebuild_cache.dir
 C:/github/skiplist/build/_deps/googletest-build/googletest/CMakeFiles/install/strip.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/benchmark.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/package.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/package_source.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/install.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/install/local.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/edit_cache.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/rebuild_cache.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/list_install_components.dir
+C:/github/skiplist/build/benchmarks/CMakeFiles/install/strip.dir

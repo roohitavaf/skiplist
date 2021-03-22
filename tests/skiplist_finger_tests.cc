@@ -5,7 +5,7 @@
 //finger tests
 TEST(skiplist_finger_tests, basic_insert_finger_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
     sk.enable_finger();
 
     auto insert_ret = sk.insert(1, 10);
@@ -32,7 +32,7 @@ TEST(skiplist_finger_tests, basic_insert_finger_test)
 
 TEST(skiplist_finger_tests, basic_erase_finger_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
     sk.enable_finger();
 
     auto insert_ret = sk.insert(1, 10);
@@ -54,7 +54,7 @@ TEST(skiplist_finger_tests, basic_erase_finger_test)
 
 TEST(skiplist_finger_tests, cap_finger_test)
 {
-    skiplist sk(10);
+    skiplist sk(1000);
     sk.enable_finger();
 
     for (int i = 0 ;i < 10; i++) {
@@ -68,7 +68,7 @@ TEST(skiplist_finger_tests, cap_finger_test)
 
 TEST(skiplist_finger_tests, many_insert_finger_test)
 {
-    skiplist sk(100);
+    skiplist sk(1000);
     sk.enable_finger();
 
     for (int i = 0 ;i < 100; i++) {
@@ -85,7 +85,7 @@ TEST(skiplist_finger_tests, many_insert_finger_test)
 
 TEST(skiplist_finger_tests, many_erase_finger_test)
 {
-    skiplist sk(100);
+    skiplist sk(1000);
     sk.enable_finger();
     
     for (int i = 0 ;i < 100; i++) {
