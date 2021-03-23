@@ -52,6 +52,8 @@ private:
     bool use_finger; 
     std::vector<skiplist_element*> finger; 
 
+    int ptrs_num;
+
     int get_random_level();
     /**
      * This function sets the finger vector. After calling this, finger[0] is right before the desired element. 
@@ -73,5 +75,7 @@ public:
     void enable_finger() {use_finger=true;}
     void disable_finger() {use_finger=false;}
     std::pair<int, skiplist_element*> find_finger (int key); 
+
+    int get_max_ptrs_nums(){return ptrs_num;}
 };
 #endif //_SKIPLIST_SRC_SKIPLIST_H_

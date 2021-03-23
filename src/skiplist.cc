@@ -37,7 +37,8 @@ skiplist::skiplist (int cap, double p, int max_level) :
     size_(0), 
     header_(INT_MIN,0), 
     nil_(INT_MAX,0),
-    use_finger(false) {
+    use_finger(false),
+    ptrs_num (0) {
     if (!max_level_) {
         max_level_ = std::max(1.0, ceil((double)log(cap)/log(1/p)));
     }
@@ -130,6 +131,7 @@ int skiplist::get_random_level(){
         level++; 
         random = ((double)rand()/RAND_MAX); 
     }
+    ptrs_num += level;
     return level;
 }
 

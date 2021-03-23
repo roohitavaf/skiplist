@@ -27,6 +27,7 @@ LIABILITY
 #include <math.h>
 
 void effect_of_elements_num (){
+    std::cout << "effect_of_elements_num: \n";
     experiment_results_series ers;
     for (int n = 100; n <= 20000; n +=100) {
         experiment_params ep (n);
@@ -36,33 +37,8 @@ void effect_of_elements_num (){
     std::cout<< "skiplist: \n" << ers.to_string() << std::endl;
 }
 
-void effect_of_max_level () {
-    experiment_results_series ers;
-    for (int l = 1; l <= 10; l +=1) {
-        experiment_params ep (100000);
-        ep.max_level = l;
-        auto er = do_experiment_skiplist(ep); 
-        ers.add(er);
-    }
-    std::cout<< "skiplist: \n" << ers.to_string() << std::endl;
-}
-
-void effect_of_p () {
-    experiment_results_series ers;
-    for (double p = 0.05; p <= 0.8; p +=0.05) {
-        std::cout << p << std::endl;
-        experiment_params ep (100000, p);
-        auto er = do_experiment_skiplist(ep); 
-        ers.add(er);
-    }
-    std::cout<< "skiplist: \n" << ers.to_string() << std::endl;
-}
-
-void effect_of_finger() {
-
-}
-
 void skiplist_vs_linkedlist () {
+    std::cout << "skiplist_vs_linkedlist: \n";
     int start = 1000; 
     int end = 20000; 
     int step = 1000; 
@@ -85,10 +61,100 @@ void skiplist_vs_linkedlist () {
     std::cout<< "linedlist: \n" << ers.to_string() << std::endl;
 }
 
+void effect_of_max_level () {
+    std::cout << "effect_of_max_level: \n";
+    experiment_results_series ers;
+    for (int l = 1; l <= 10; l +=1) {
+        experiment_params ep (100000);
+        ep.max_level = l;
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist: \n" << ers.to_string() << std::endl;
+}
+
+void effect_of_p () {
+    std::cout << "effect_of_p: \n";
+    experiment_results_series ers;
+    for (double p = 0.05; p <= 0.8; p +=0.05) {
+        experiment_params ep (100000, p);
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist: \n" << ers.to_string() << std::endl;
+}
+
+void effect_of_locality(){
+    std::cout << "effect_of_locality: \n";
+    int start = 1000; 
+    int end = 20000; 
+    int step = 1000; 
+
+    experiment_results_series ers;
+    for (int n = start; n <= end; n +=step) {
+        experiment_params ep (n);
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist (without locality): \n" << ers.to_string() << std::endl;
+
+    ers.clear();
+    for (int n = start; n <= end; n +=step) {
+        experiment_params ep (n);
+        ep.locality= true; 
+        ep.k=10;
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist (with locality): \n" << ers.to_string() << std::endl;
+
+    ers.clear();
+    for (int n = start; n <= end; n +=step) {
+        experiment_params ep (n);
+        ep.locality= true; 
+        ep.k=10;
+        ep.use_finger = true;
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist (with locality & finger): \n" << ers.to_string() << std::endl;
+}
+void effect_of_finger() {
+     std::cout << "effect_of_finger: \n";
+    int start = 1; 
+    int end = 10; 
+    int step = 1; 
+    int n = 500000;
+
+    experiment_results_series ers;
+    for (int k = start; k <= end; k +=step) {
+        experiment_params ep (n);
+        ep.locality = true; 
+        ep.k = k;
+        ep.use_finger=false;
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist (without finger): \n" << ers.to_string() << std::endl;
+    ers.clear();
+
+    for (int k = start; k <= end; k +=step) {
+        experiment_params ep (n);
+        ep.locality = true; 
+        ep.k = k;
+        ep.use_finger=true;
+        auto er = do_experiment_skiplist(ep); 
+        ers.add(er);
+    }
+    std::cout<< "skiplist (with finger): \n" << ers.to_string() << std::endl;
+}
+
 int main (int argc, char** argv) {
     effect_of_elements_num();
-    // effect_of_max_level();
-    // effect_of_p();
-    // skiplist_vs_linkedlist();
+    skiplist_vs_linkedlist();
+    effect_of_max_level();
+    effect_of_p();
+    effect_of_locality();
+    effect_of_finger();
     return 0;
 }

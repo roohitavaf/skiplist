@@ -38,6 +38,8 @@ struct experiment_params
     int max_level;
     double p;
     bool use_finger;
+    bool locality; 
+    int k; 
 
     experiment_params(int insert_num_, double p_ = 0.25) : insert_num(insert_num_), p(p_)
     {
@@ -45,6 +47,7 @@ struct experiment_params
         erase_num = std::max(1,insert_num / 100);
         max_level = std::max(1.0, ceil((double)log(insert_num) / log(1 / p)));
         use_finger = false;
+        locality = false;
     }
 };
 
@@ -53,10 +56,11 @@ struct experiment_results
     double avg_insert_us;
     double avg_search_us;
     double avg_erase_us;
+    int max_ptrs_num;
 
     void print () {
         std::cout << "avg_insert_us: " << avg_insert_us << " avg_search_us: " \
-         << avg_search_us << " avg_erase_us: " << avg_erase_us << std::endl;
+         << avg_search_us << " avg_erase_us: " << avg_erase_us << " max_ptrs_num: " << max_ptrs_num << std::endl;
     }
 };
 
@@ -70,10 +74,10 @@ struct experiment_results_series {
     }
 
     std::string to_string() {
-        std::string result = "avg_insert_us,avg_search_us,avg_erase_us\n"; 
+        std::string result = "avg_insert_us,avg_search_us,avg_erase_us,max_ptrs_num\n"; 
         for (auto& instance : instances) {
             result += std::to_string(instance.avg_insert_us) + "," + std::to_string(instance.avg_search_us) + \
-            "," + std::to_string(instance.avg_erase_us) + "\n"; 
+            "," + std::to_string(instance.avg_erase_us) + "," + std::to_string(instance.max_ptrs_num) + "\n"; 
         }
         return result;
     }
@@ -90,20 +94,26 @@ experiment_results do_experiment_skiplist(experiment_params params)
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     for (int i = 0; i < params.insert_num; i++)
     {
-        double random = ((double)rand() / RAND_MAX);
-        int key = (int)(random * params.insert_num);
-        sk.insert(key, i);
+        sk.insert(i, i);
     }
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     auto total = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
     er.avg_insert_us = (double)total/params.insert_num;
+    er.max_ptrs_num = sk.get_max_ptrs_nums();
 
     //search
     begin = std::chrono::steady_clock::now();
+    int key; 
     for (int i = 0; i < params.search_num; i++)
     {
-        double random = ((double)rand() / RAND_MAX);
-        int key = (int)(random * params.insert_num);
+        if (i==0 || !params.locality){
+            double random = ((double)rand() / RAND_MAX);
+            key = (int)(random * params.insert_num);
+        }else {
+            double random = ((double)rand() / RAND_MAX);
+            int sign = (((double)rand() / RAND_MAX) < 0.5) ? 1 : -1 ;
+            key = sign*((int)(random * params.k) + 1) +  key;
+        }
         sk.search(key);
     }
     end = std::chrono::steady_clock::now();
