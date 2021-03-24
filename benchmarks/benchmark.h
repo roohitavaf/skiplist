@@ -121,7 +121,7 @@ experiment_results do_experiment_skiplist(experiment_params params)
     er.avg_search_us = (double)total/params.search_num; 
 
     //erase
-     begin = std::chrono::steady_clock::now();
+    begin = std::chrono::steady_clock::now();
     for (int i = 0; i < params.erase_num; i++)
     {
         double random = ((double)rand() / RAND_MAX);
@@ -134,33 +134,51 @@ experiment_results do_experiment_skiplist(experiment_params params)
     return er;
 }
 
-// experiment_results do_experiment_map(experiment_params params)
-// {
-//     std::map<int, int> m;
+experiment_results do_experiment_map(experiment_params params)
+{
+    experiment_results er; 
+    std::map<int, int> m;
 
-//     //insert
-//     for (int i = 0; i < params.insert_num; i++)
-//     {
-//         double random = ((double)rand() / RAND_MAX);
-//         int key = (int)(random * params.insert_num);
-//         m.insert(key, i);
-//     }
+    //insert
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    for (int i = 0; i < params.insert_num; i++)
+    {
+        m[i] = i;
+    }
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    auto total = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
+    er.avg_insert_us = (double)total/params.insert_num;
 
-//     //search
-//     for (int i = 0; i < params.search_num; i++)
-//     {
-//         double random = ((double)rand() / RAND_MAX);
-//         int key = (int)(random * params.insert_num);
-//         m.find(key);
-//     }
+    //search
+    begin = std::chrono::steady_clock::now();
+    int key; 
+    for (int i = 0; i < params.search_num; i++)
+    {
+        if (i==0 || !params.locality){
+            double random = ((double)rand() / RAND_MAX);
+            key = (int)(random * params.insert_num);
+        }else {
+            double random = ((double)rand() / RAND_MAX);
+            int sign = (((double)rand() / RAND_MAX) < 0.5) ? 1 : -1 ;
+            key = sign*((int)(random * params.k) + 1) +  key;
+        }
+        m.find(key);
+    }
+    end = std::chrono::steady_clock::now();
+    total = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
+    er.avg_search_us = (double)total/params.search_num; 
 
-//     //erase
-//     for (int i = 0; i < params.erase_num; i++)
-//     {
-//         double random = ((double)rand() / RAND_MAX);
-//         int key = (int)(random * params.insert_num);
-//         m.erase(key);
-//     }
 
-//     return {0, 0, 0};
-// }
+    //erase
+    begin = std::chrono::steady_clock::now();
+    for (int i = 0; i < params.erase_num; i++)
+    {
+        double random = ((double)rand() / RAND_MAX);
+        int key = (int)(random * params.insert_num);
+        m.erase(key);
+    }
+    end = std::chrono::steady_clock::now();
+    total = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count(); 
+    er.avg_erase_us = (double)total/params.erase_num; 
+    return er;
+}
