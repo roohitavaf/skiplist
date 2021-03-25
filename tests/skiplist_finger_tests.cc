@@ -57,7 +57,7 @@ TEST(skiplist_finger_tests, cap_finger_test)
     skiplist sk(1000);
     sk.enable_finger();
 
-    for (int i = 0 ;i < 10; i++) {
+    for (int i = 0 ;i <= 10; i++) {
         auto insert_ret = sk.insert(i, i*10);
         ASSERT_EQ(true, insert_ret);
     }
